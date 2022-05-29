@@ -74,10 +74,10 @@ else()
         ${CMAKE_CURRENT_LIST_DIR}/internal/qimagepainterprovider.h
         )
 
-    if (USE_SYSTEM_FREETYPE)
+    if (NOT BUILD_THIRDPARTY)
          set(ENGRAVING_INFRASTRUCTURE_LINK freetype)
-    else (USE_SYSTEM_FREETYPE)
+    else (NOT BUILD_THIRDPARTY)
          set(ENGRAVING_INFRASTRUCTURE_LINK mscore_freetype)
-    endif (USE_SYSTEM_FREETYPE)
+    endif (NOT BUILD_THIRDPARTY)
 
 endif()

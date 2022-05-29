@@ -49,7 +49,11 @@ elseif(OS_IS_WASM)
     )
 endif()
 
-add_subdirectory(${PROJECT_SOURCE_DIR}/thirdparty/fluidsynth fluidsynth)
+if(BUILD_THIRDPARTY)
+    add_subdirectory(${PROJECT_SOURCE_DIR}/thirdparty/fluidsynth fluidsynth)
+else()
+    find_package(FluidSynth REQUIRED)
+endif()
 
 set(MODULE_SRC
 
@@ -164,26 +168,8 @@ set(MODULE_SRC
     ${CMAKE_CURRENT_LIST_DIR}/devtools/waveformmodel.h
     )
 
-set(FLUIDSYNTH_DIR ${PROJECT_SOURCE_DIR}/thirdparty/fluidsynth/fluidsynth-2.1.4)
-set (FLUIDSYNTH_INC
-    ${FLUIDSYNTH_DIR}/include
-    ${FLUIDSYNTH_DIR}/src
-    ${FLUIDSYNTH_DIR}/src/external
-    ${FLUIDSYNTH_DIR}/src/utils
-    ${FLUIDSYNTH_DIR}/src/midi
-    ${FLUIDSYNTH_DIR}/src/rvoice
-    ${FLUIDSYNTH_DIR}/src/sfloader
-    ${FLUIDSYNTH_DIR}/src/bindings
-    ${FLUIDSYNTH_DIR}/src/synth
-    ${FLUIDSYNTH_DIR}/src/drivers
-    )
-
-set (MODULE_INCLUDE
-    ${FLUIDSYNTH_INC}
-    )
-
 set(MODULE_LINK
-    fluidsynth
+    FluidSynth::FluidSynth
     )
 
 if (ENABLE_AUDIO_EXPORT)

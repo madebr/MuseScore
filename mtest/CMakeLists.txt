@@ -36,12 +36,6 @@ include_directories(
       ${PROJECT_SOURCE_DIR}/mu4
       )
 
-if (USE_SYSTEM_FREETYPE)
-      include_directories(${FREETYPE_INCLUDE_DIRS})
-else (USE_SYSTEM_FREETYPE)
-      include_directories(${PROJECT_SOURCE_DIR}/thirdparty/freetype/include)
-endif (USE_SYSTEM_FREETYPE)
-
 if (MSVC)
       set(_all_h_file "${PROJECT_SOURCE_DIR}/all.h")
 endif (MSVC)
@@ -141,11 +135,11 @@ target_link_libraries(
       ${QT_LIBRARIES}
       )
 
-if (USE_SYSTEM_FREETYPE)
+if (NOT BUILD_THIRDPARTY)
       target_link_libraries(mtest freetype)
-else (USE_SYSTEM_FREETYPE)
+else (NOT BUILD_THIRDPARTY)
       target_link_libraries(mtest mscore_freetype)
-endif (USE_SYSTEM_FREETYPE)
+endif (NOT BUILD_THIRDPARTY)
 
 set(CMAKE_CXX_FLAGS         "${CMAKE_CXX_FLAGS} ${Qt5Widgets_EXECUTABLE_COMPILE_FLAGS}")
 

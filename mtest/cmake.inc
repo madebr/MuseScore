@@ -64,11 +64,11 @@ else (MSVC)
             )
 endif (MSVC)
 
-if (USE_SYSTEM_FREETYPE)
+if (NOT BUILD_THIRDPARTY)
       target_link_libraries(${TARGET} freetype)
-else (USE_SYSTEM_FREETYPE)
+else (NOT BUILD_THIRDPARTY)
       target_link_libraries(${TARGET} mscore_freetype)
-endif (USE_SYSTEM_FREETYPE)
+endif (NOT BUILD_THIRDPARTY)
 
 if (NOT MINGW AND NOT APPLE AND NOT MSVC)
    target_link_libraries(${TARGET}
