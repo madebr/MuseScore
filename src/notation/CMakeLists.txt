@@ -158,16 +158,9 @@ set(MODULE_UI
     ${WIDGETS_UI}
     )
 
-set(FREETYPE_LIB )
-if (NOT BUILD_THIRDPARTY)
-    set(FREETYPE_LIB freetype)
-else (NOT BUILD_THIRDPARTY)
-    set(FREETYPE_LIB mscore_freetype)
-endif (NOT BUILD_THIRDPARTY)
-
 set(MODULE_LINK
     Qt5::Svg
-    ${FREETYPE_LIB}
+    mscore_freetype
     engraving
     commonscene
     uicomponents

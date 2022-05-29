@@ -36,12 +36,6 @@ include_directories(
       ${PROJECT_SOURCE_DIR}/mu4
       )
 
-if (NOT BUILD_THIRDPARTY)
-      include_directories(${FREETYPE_INCLUDE_DIRS})
-else (NOT BUILD_THIRDPARTY)
-      include_directories(${PROJECT_SOURCE_DIR}/thirdparty/freetype/include)
-endif (NOT BUILD_THIRDPARTY)
-
 if (MSVC)
       set(_all_h_file "${PROJECT_SOURCE_DIR}/all.h")
 endif (MSVC)

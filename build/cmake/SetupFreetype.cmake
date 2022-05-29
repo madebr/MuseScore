@@ -13,18 +13,21 @@ if (NOT BUILD_THIRDPARTY)
             else (FREETYPE_INCLUDE_DIRS)
                   message(FATAL_ERROR "freetype >= 2.5.2 is required\n")
             endif (FREETYPE_INCLUDE_DIRS)
+            add_library(FreeType::FreeType INTERFACE IMPORTED)
+            set_target_properties(FreeType::FreeType PROPERTIES
+                INTERFACE_INCLUDE_DIRECTORIES "${FREETYPE_INCLUDE_DIRS}"
+                INTERFACE_LINK_DIRECTORIES "${FREETYPE_LIBDIR}"
+                INTERFACE_LIBRARIES "${FREETYPE_LIBRARIES}"
+                INTERFACE_COMPILE_OPTIONS "${FREETYPE_CPP}"
+                )
       else (OS_IS_MAC)
             find_package(Freetype REQUIRED)
       endif (OS_IS_MAC)
 endif (NOT BUILD_THIRDPARTY)
 
-
-if (NOT BUILD_THIRDPARTY)
-      include_directories(${FREETYPE_INCLUDE_DIRS})
-else (NOT BUILD_THIRDPARTY)
-      include_directories(${PROJECT_SOURCE_DIR}/thirdparty/freetype/include)
-endif (NOT BUILD_THIRDPARTY)
-
 if (BUILD_THIRDPARTY)
       add_subdirectory(thirdparty/freetype)
+else (BUILD_THIRDPARTY)
+      add_library(mscore_freetype INTERFACE)
+      target_link_libraries(mscore_freetype INTERFACE Freetype::Freetype)
 endif (BUILD_THIRDPARTY)

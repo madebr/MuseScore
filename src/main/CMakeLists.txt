@@ -116,13 +116,6 @@ endif()
 # Dependency library declaration
 ###########################################
 
-set(FREETYPE_LIB )
-if (NOT BUILD_THIRDPARTY)
-     set(FREETYPE_LIB ${FREETYPE_LIBRARIES})
-else (NOT BUILD_THIRDPARTY)
-     set(FREETYPE_LIB mscore_freetype)
-endif (NOT BUILD_THIRDPARTY)
-
 set(LINK_LIB
     ${QT_LIBRARIES}
     global
@@ -156,7 +149,7 @@ set(LINK_LIB
     )
 
 if (NOT CC_IS_EMSCRIPTEN)
-    list(APPEND LINK_LIB ${FREETYPE_LIB})
+    list(APPEND LINK_LIB mscore_freetype)
     list(APPEND LINK_LIB cloud)
     list(APPEND LINK_LIB languages)
     list(APPEND LINK_LIB iex_musicxml)
