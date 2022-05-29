@@ -159,11 +159,11 @@ set(MODULE_UI
     )
 
 set(FREETYPE_LIB )
-if (USE_SYSTEM_FREETYPE)
+if (NOT BUILD_THIRDPARTY)
     set(FREETYPE_LIB freetype)
-else (USE_SYSTEM_FREETYPE)
+else (NOT BUILD_THIRDPARTY)
     set(FREETYPE_LIB mscore_freetype)
-endif (USE_SYSTEM_FREETYPE)
+endif (NOT BUILD_THIRDPARTY)
 
 set(MODULE_LINK
     Qt5::Svg

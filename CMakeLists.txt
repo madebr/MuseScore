@@ -50,6 +50,7 @@ option(BUILD_64 "Build 64 bit version of editor" ON)
 option(BUILD_PORTABLEAPPS "Windows build for PortableApps.com" OFF)
 option(BUILD_FOR_WINSTORE "Build for the Windows Store." OFF)
 option(BUILD_AUTOUPDATE "Build with autoupdate support" OFF)
+option(BUILD_THIRDPARTY "Use vendored thirdparty libraries" ON)
 
 set(CRASH_REPORT_URL "" CACHE STRING "URL where to send crash reports")
 option(LOGGER_DEBUGLEVEL_ENABLED "Enable logging debug level" ON)
@@ -98,7 +99,6 @@ option(TRACE_DRAW_OBJ_ENABLED "Trace draw objects" OFF)
 
 set(QT_SUPPORT ON)
 
-option(USE_SYSTEM_FREETYPE "Use system FreeType" OFF) # requires freetype >= 2.5.2, does not work on win
 set(SCRIPT_INTERFACE  TRUE)
 
 set(VST3_SDK_VERSION "3.7")
